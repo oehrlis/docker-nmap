@@ -28,11 +28,11 @@ LABEL maintainer="stefan.oehrli@trivadis.com"
 # RUN as user root
 # ----------------------------------------------------------------------
 # - install a few packages used to run nmap
-RUN apk --update add nmap nmap-nselibs nmap-scripts && \
+RUN apk add --update --no-cache nmap nmap-nselibs nmap-scripts && \
     rm -rf /var/cache/apk/*
 
 # set the ENTRYPOINT
-ENTRYPOINT ["nmap"]
+ENTRYPOINT ["/usr/bin/nmap"]
 
 # Define default command for nmap
 CMD ["--help"]
